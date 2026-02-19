@@ -12,6 +12,7 @@ This is a neovim plugin for the Codam header.
 <details open>
   <summary>Using lazy.nvim</summary>
 Create a file 'codam-header.lua' in ~/.config/nvim/plugins/ with the following content:
+
 ```lua
 return {
 	"https://github.com/Vomzent/nvim-Codam-header.git",
@@ -22,7 +23,7 @@ return {
 		-- your configuration
 	  username = "myusername", -- replace "myusername" with your intra
     email = "myusername@student.codam.nl", -- replace email with your intra email
-}},
+  },
 }
 ```
 
