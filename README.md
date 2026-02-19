@@ -1,25 +1,28 @@
-# header42.nvim
+# Codam Header for neovim
 
 Unofficial lua port of **[42header](https://github.com/42paris/42header)** made for neovim.
+Configured for Codam Students.
 
 ### Description
 
-This is a neovim plugin for the 42 standard header.
+This is a neovim plugin for the Codam header.
 
 ### Installation
 
 <details open>
   <summary>Using lazy.nvim</summary>
+Create a file 'codam-header.lua' in ~/.config/nvim/plugins/ with the following content:
 
 ```lua
-{
-  "https://codeberg.org/42nerds/header42.nvim",
-  version = "*",
-  lazy = true,
-  cmd = { "Header42" },
-  ft = { "c", "cpp", "python" },
-  opts = {
-    -- your configuration
+return {
+	"https://github.com/Vomzent/nvim-Codam-header.git",
+	version = "*",
+	cmd = { "Stdheader" },
+	ft = { "c", "cpp", "python" },
+	opts = {
+		-- your configuration
+	  username = "myusername", -- replace "myusername" with your intra
+    email = "myusername@student.codam.nl", -- replace email with your intra email
   },
 }
 ```
@@ -53,7 +56,7 @@ vim.opt_local.textwidth = 79
   username = function()
     return require("header42.git").username() or os.getenv("USER") or "unknown"
   end,
-  domain = "student.42.fr",
+  domain = "student.codam.nl",
   email = function(username, domain)
     return require("header42.git").email() or os.getenv("MAIL") or username .. "@" .. domain
   end,
@@ -62,14 +65,14 @@ vim.opt_local.textwidth = 79
     pattern = { "*.c", "*.h", "*.cc", "*.hh", "*.cpp", "*.hpp", "*.py" },
   },
   asciiart = {
-    "        :::      ::::::::",
-    "      :+:      :+:    :+:",
-    "    +:+ +:+         +:+  ",
-    "  +#+  +:+       +#+     ",
-    "+#+#+#+#+#+   +#+        ",
-    "     #+#    #+#          ",
-    "    ###   ########.fr    ",
-  },
+  	"       ::::::::          ",
+    "     :+:    :+:          ",
+    "    +:+                  ",
+    "   +#+                   ",
+    "  +#+                    ",
+    "#+#    #+#               ",
+    "########   odam.nl       ",
+	},
   commentstrings = {
     c = { "/*", "*", "*/" },
     h = { "/*", "*", "*/" },
@@ -93,7 +96,7 @@ You can define the username and email address statically:
 ```lua
 {
   username = "myusername",
-  email = "myusername@student.42.fr",
+  email = "myusername@student.codam.nl",
 }
 ```
 
@@ -112,7 +115,7 @@ Or dynamically, in which case the value will be evaluated lazily:
 
 ### Usage
 
-You can run the `:Header42` command to update the header (if it exists). To insert a new header at the beginning of the file, add a bang to the command: `:Header42!`.
+You can run the `:Stdheader` command to update the header (if it exists). To insert a new header at the beginning of the file, add a bang to the command: `:Stdheader!`.
 
 If `autocmd.create = true`, the header will be updated automatically when the `BufWritePre` event is triggered.
 
